@@ -3,6 +3,7 @@ import { useState } from "react";
 import { paymentService } from "@/services/paymentService";
 import { ShoppingCart, Minus, Plus, X } from 'lucide-react'; // You'll need to install lucide-react
 import { redirect } from "next/navigation";
+import Navigation from '@/components/Navigation';
 
 
 // Types for our food ordering system
@@ -76,21 +77,10 @@ export default function Home() {
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white">
-      {/* Header */}
-      <header className="bg-white border-b border-gray-100">
-        <div className="max-w-7xl mx-auto px-4 py-6 flex justify-between items-center">
-          <h1 className="text-3xl font-bold text-gray-900">
-            <span className="text-blue-600">Tasty</span>Eats
-          </h1>
-          <button
-            onClick={() => setIsCartOpen(true)}
-            className="group flex items-center gap-2 bg-blue-50 hover:bg-blue-100 text-blue-600 px-5 py-2.5 rounded-full transition-all duration-200"
-          >
-            <ShoppingCart className="w-5 h-5" />
-            <span className="font-medium">{cart.length}</span>
-          </button>
-        </div>
-      </header>
+      <Navigation 
+        cartCount={cart.length} 
+        onCartClick={() => setIsCartOpen(true)} 
+      />
 
       {/* Main Content */}
       <main className="max-w-7xl mx-auto px-4 py-12">
